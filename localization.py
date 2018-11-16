@@ -17,15 +17,15 @@ def localization(sharpened_image):
 	# img_raw = cv2.imread('circle.png',0)
 	# img_raw = cv2.imread('oneteethjessfilr33.jpg',0)
 
-
 	# print('gums:',img_raw[80,150]) # gums
 	# print('top teeth:',img_raw[102,171]) # teeth
 	# print('bottom teeth:',img_raw[290,254]) # teeth
 	# print('space:',img_raw[312,312]) # teeth
 
 	## Threshold image - this primes the image for edge detection
-	img_raw = cv2.GaussianBlur(sharpened_image,(5,5),11) # Add Gaussian blur 
-	img_raw = cv2.equalizeHist(img_raw) # Equalize histogr3m = improve contrast
+	img_raw = cv2.cvtColor(sharpened_image,cv2.COLOR_BGR2GRAY)
+	img_raw = cv2.GaussianBlur(img_raw,(5,5),11) # Add Gaussian blur 
+	img_raw = cv2.equalizeHist(img_raw) # Equalize histogram = improve contrast
 
 	img_invert = cv2.bitwise_not(img_raw) # Invert image
 	img_blur = cv2.GaussianBlur(img_invert,(5,5),0) # Add Gaussian blur 
