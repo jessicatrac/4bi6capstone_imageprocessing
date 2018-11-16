@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
-from scipy.ndimage.filters import median_filter
-import matplotlib as mp
+#from scipy.ndimage.filters import median_filter
+#import matplotlib as mp
 
 
 def sharpen(raw_image):
