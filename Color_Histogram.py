@@ -3,7 +3,7 @@
  *
  * Usage: python ColorHistogram.py <filename>
 '''
-def fluorescence_hist (img):
+def fluorescence_hist (img, mask):
     import numpy
     import cv2
     import sys
@@ -33,7 +33,7 @@ def fluorescence_hist (img):
     # each color
     plt.xlim([0, 256])
     for(channel, c) in zip(channels, colors):
-        histogram = cv2.calcHist([channel], [0], None, [256], [0, 256])
+        histogram = cv2.calcHist([channel], [0], mask, [256], [0, 256])
         plt.plot(histogram, color = c)
     
     plt.xlabel("Color value")
