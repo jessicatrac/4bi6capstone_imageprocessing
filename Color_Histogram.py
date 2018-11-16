@@ -17,7 +17,7 @@ def fluorescence_hist (img):
     # display the image 
     cv2.namedWindow("Original Image", cv2.WINDOW_NORMAL)
     cv2.imshow("Original Image", img)
-    cv2.waitKey(0)
+    cv2.waitKey(25)
     
     # split into channels
     channels = cv2.split(img)
