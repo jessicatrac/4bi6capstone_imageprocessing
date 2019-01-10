@@ -13,6 +13,6 @@ def main():
 	localized_image = cv2.bitwise_and(raw_image,raw_image,mask= mask)
 	#Color_Histogram.fluorescence_hist(raw_image,thresholding_image)
 	detect_value = Color_Thresholding.red_detection(localized_image)
-	print detect_value
+	
 
 main()
