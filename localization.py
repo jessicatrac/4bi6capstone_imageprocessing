@@ -77,4 +77,5 @@ def localization(sharpened_image):
 	# cv2.imshow("output", contours_drawing)  
 	plt.show()
 
+
 	return img_threshold
