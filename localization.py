@@ -34,8 +34,8 @@ def localization(sharpened_image):
 
 	## Edge Detection using Canny Algorithm
 
-	max_threshold = otsu_threshold*0.9
-	min_threshold = otsu_threshold*0.2 # lower threshold is half of otsu's adaptive threshold
+	max_threshold = otsu_threshold*1
+	min_threshold = otsu_threshold # lower threshold is half of otsu's adaptive threshold
 
 	# print('max thresh:',max_threshold)
 	# print('otsu:',otsu_threshold)

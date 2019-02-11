@@ -6,8 +6,8 @@ def red_detection (img):
 
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
-    mask1 = cv2.inRange(hsv, (320,50,50), (360,255,255)) # 320 is "red magenta" on colour wheel
-    mask2 = cv2.inRange(hsv, (0,50,50), (39,255,255)) # 45 is "warm yellow" on colour wheel
+    mask1 = cv2.inRange(hsv, (320,50,20), (360,255,255)) # 320 is "red magenta" on colour wheel
+    mask2 = cv2.inRange(hsv, (0,50,20), (39,255,255)) # 45 is "warm yellow" on colour wheel
     mask = cv2.bitwise_or(mask1, mask2)
     res = cv2.bitwise_and(img,img,mask= mask)
 
