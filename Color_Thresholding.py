@@ -11,12 +11,23 @@ def red_detection (img):
     mask = cv2.bitwise_or(mask1, mask2)
     res = cv2.bitwise_and(img,img,mask= mask)
 
-    cv2.namedWindow("Original Image", cv2.WINDOW_NORMAL)
-    cv2.imshow('Original Image', img)
-    cv2.namedWindow("Mask", cv2.WINDOW_NORMAL)
-    cv2.imshow('Mask', mask)
-    cv2.namedWindow("Red", cv2.WINDOW_NORMAL)
-    cv2.imshow('Red', res)
+    # cv2.namedWindow("Original Image", cv2.WINDOW_NORMAL)
+    # cv2.imshow('Original Image', img)
+    # cv2.namedWindow("Mask", cv2.WINDOW_NORMAL)
+    # cv2.imshow('Mask', mask)
+    # cv2.namedWindow("Red", cv2.WINDOW_NORMAL)
+    # cv2.imshow('Red', res)
+
+	# examples for poster
+    plt.imshow(img)
+    plt.xticks([]), plt.yticks([])
+    plt.show()
+    plt.imshow(mask,cmap = 'gray')
+    plt.xticks([]), plt.yticks([])
+    plt.show()
+    plt.imshow(res)
+    plt.xticks([]), plt.yticks([])
+    plt.show()
 
     nzCount = cv2.countNonZero(mask)
     print(nzCount)
@@ -25,7 +36,7 @@ def red_detection (img):
     if nzCount > 1000:
         bin_detect="true" #output true if plaque is detected
 
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     return bin_detect

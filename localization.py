@@ -1,5 +1,5 @@
 '''
-Determine different regions in extracted image. 
+Determine different regions in extracted image.
 Jessica Trac.
 November 2018.
 '''
@@ -24,11 +24,11 @@ def localization(sharpened_image):
 
 	## Threshold image - this primes the image for edge detection
 	img_raw = cv2.cvtColor(sharpened_image,cv2.COLOR_BGR2GRAY)
-	img_raw = cv2.GaussianBlur(img_raw,(5,5),11) # Add Gaussian blur 
+	img_raw = cv2.GaussianBlur(img_raw,(5,5),11) # Add Gaussian blur
 	img_raw = cv2.equalizeHist(img_raw) # Equalize histogram = improve contrast
 
 	img_invert = cv2.bitwise_not(img_raw) # Invert image
-	img_blur = cv2.GaussianBlur(img_invert,(5,5),0) # Add Gaussian blur 
+	img_blur = cv2.GaussianBlur(img_invert,(5,5),0) # Add Gaussian blur
 	otsu_threshold, img_threshold = cv2.threshold(img_blur,0,255,cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU) # Otsu's Thresholding (determines a suitable threshold)
 	ret,img_threshold = cv2.threshold(img_raw,otsu_threshold*1.3,255,cv2.THRESH_BINARY)
 
@@ -47,22 +47,26 @@ def localization(sharpened_image):
 
 	kernel = np.ones((5,5),np.uint8)
 	edges_dilated = cv2.dilate(edges_threshold,kernel,iterations = 1) # Dilate edges (accounting for tiny edges; 'noise')
-	edges_blur = cv2.GaussianBlur(edges_dilated,(5,5),0) # Add Gaussian blur 
+	edges_blur = cv2.GaussianBlur(edges_dilated,(5,5),0) # Add Gaussian blur
 
 
-	## Plotting images vs. detected edges
-	plt.subplot(211),plt.imshow(img_raw,cmap = 'gray')
-	plt.title('Original Image'), plt.xticks([]), plt.yticks([])
-	plt.subplot(212),plt.imshow(img_threshold,cmap = 'gray')
-	plt.title('Threshold Image / Mask'), plt.xticks([]), plt.yticks([])
+	# ## Plotting images vs. detected edges
+	# plt.subplot(211),plt.imshow(img_raw,cmap = 'gray')
+	# plt.title('Original Image'), plt.xticks([]), plt.yticks([])
+	# plt.subplot(212),plt.imshow(img_threshold,cmap = 'gray')
+	# plt.title('Threshold Image / Mask'), plt.xticks([]), plt.yticks([])
+
+	# example for poster
+	plt.imshow(img_threshold,cmap = 'gray')
+	plt.xticks([]), plt.yticks([])
 
 	# plt.subplot(223),plt.imshow(edges_raw,cmap = 'gray')
 	# plt.title('Original Edge Image'), plt.xticks([]), plt.yticks([])
 	# plt.subplot(224),plt.imshow(edges_blur,cmap = 'gray')
 	# plt.title('Equalized Edge Image'), plt.xticks([]), plt.yticks([])
 
-	# '''contours is a Python list of all the contours in the image. 
-	# Each individual contour is a Numpy array of (x,y) coordinates of boundary points 
+	# '''contours is a Python list of all the contours in the image.
+	# Each individual contour is a Numpy array of (x,y) coordinates of boundary points
 	# of the object.'''
 
 	# ## Contour Detection from Edges
@@ -74,7 +78,7 @@ def localization(sharpened_image):
 	#   cv2.drawContours(contours_drawing, contours, i, color, -1, cv2.LINE_8, hierarchy, 0)
 
 	# contours_drawing = cv2.resize(contours_drawing, (300, 300)) # Plot contour drawing in smaller window
-	# cv2.imshow("output", contours_drawing)  
+	# cv2.imshow("output", contours_drawing)
 	plt.show()
 
 
