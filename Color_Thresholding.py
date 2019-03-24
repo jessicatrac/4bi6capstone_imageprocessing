@@ -1,9 +1,11 @@
-def red_detection (img):
+def red_detection (img,teeth_mask):
     import numpy
     import cv2
     import sys
     from matplotlib import pyplot as plt
 
+    nzCount_teeth = cv2.countNonZero(teeth_mask)
+    print(nzCount_teeth)
     hsv = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
 
     mask1 = cv2.inRange(hsv, (320,50,20), (360,255,255)) # 320 is "red magenta" on colour wheel
@@ -29,11 +31,13 @@ def red_detection (img):
     plt.xticks([]), plt.yticks([])
     plt.show()
 
-    nzCount = cv2.countNonZero(mask)
-    print(nzCount)
+    nzCount_plaque = cv2.countNonZero(mask)
+    print(nzCount_plaque)
+    percentage = (float(nzCount_plaque)/float(nzCount_teeth))*100
+    print(percentage)
 
     bin_detect="false"
-    if nzCount > 1000:
+    if nzCount_plaque > 1000:
         bin_detect="true" #output true if plaque is detected
 
     # cv2.waitKey(0)
