@@ -43,4 +43,6 @@ def red_detection (img,teeth_mask):
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
 
+    percentage = round(percentage,2)
+
     return bin_detect, percentage;
