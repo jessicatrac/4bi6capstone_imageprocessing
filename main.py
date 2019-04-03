@@ -8,7 +8,11 @@ import Color_Thresholding
 def main():
 
     # Testing image with plaque
+<<<<<<< Updated upstream
 	image = cv2.imread('AKOF1.jpg',1)
+=======
+	image = cv2.imread('participant_training/ranjeetB1.jpg',1)
+>>>>>>> Stashed changes
 	mask = localization.localization(image)
 	localized_image = cv2.bitwise_and(image,image,mask= mask)
 	detect_value, percentage = Color_Thresholding.red_detection(localized_image,mask)
